@@ -5,6 +5,12 @@ from .Paciente.paciente_informacion import PacienteInformacion
 
 from .master_table import *
 
+#Impor UpdateView
+from django.views.generic import UpdateView
+
+
+#Forms
+from .forms import *
 
 # Create your views here.
 
@@ -21,7 +27,7 @@ def guerreronegro(request):
     context = {
         'paciente': PacienteInformacion.objects.filter(lugar_nacimiento='Guerrero Negro')
     }
-    return render(request, 'startmin/tables.html', context)
+    return render(request, 'startmin/pages/tables.html', context)
 
 
 def isladecedros(request):
@@ -29,7 +35,7 @@ def isladecedros(request):
     context = {
         'paciente': PacienteInformacion.objects.filter(lugar_nacimiento='Isla de Cedros')
     }
-    return render(request, 'startmin/isladecedros.html', context)
+    return render(request, 'startmin/pages/isladecedros.html', context)
 
 
 def results(request, ficha):
@@ -49,3 +55,10 @@ def results(request, ficha):
     }
 
     return render(request, 'Result/results.html', context)
+
+
+class PacienteUpdate(UpdateView):
+    model = PacienteInformacion
+    form_class = PacienteInformacionForm
+    template_name = 'Result/paciente_update.html'
+    success_url = '/guerreronegro/'

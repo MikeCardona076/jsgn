@@ -9,10 +9,6 @@ pruebas = (
 )
 
 
-
-
-
-
 class PruebaLaboratorio(models.Model):
     paciente = models.CharField(max_length=100, blank=True)
     clave = models.IntegerField(default=0)
