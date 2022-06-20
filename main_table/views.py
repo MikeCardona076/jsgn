@@ -21,7 +21,7 @@ def guerreronegro(request):
     context = {
         'paciente': PacienteInformacion.objects.filter(lugar_nacimiento='Guerrero Negro')
     }
-    return render(request, 'startmin/pages/tables.html', context)
+    return render(request, 'startmin/tables.html', context)
 
 
 def isladecedros(request):
@@ -29,7 +29,7 @@ def isladecedros(request):
     context = {
         'paciente': PacienteInformacion.objects.filter(lugar_nacimiento='Isla de Cedros')
     }
-    return render(request, 'startmin/pages/isladecedros.html', context)
+    return render(request, 'startmin/isladecedros.html', context)
 
 
 def results(request, ficha):
@@ -43,9 +43,9 @@ def results(request, ficha):
                 qs30_resultado[estudio.nombre] = [prueba.resultado, prueba.unidad]
             else:
                 continue
-    
+
     context = {
         'qs30_resultado': qs30_resultado,
     }
-  
+
     return render(request, 'Result/results.html', context)
