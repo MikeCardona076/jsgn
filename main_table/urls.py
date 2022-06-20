@@ -4,8 +4,8 @@ from django.contrib.auth import views as login_views
 
 
 urlpatterns = [
-    path('', login_views.LoginView.as_view(template_name='startmin/pages/login.html'), name='login'),
-    path('logout/', login_views.LogoutView.as_view(template_name='startmin/pages/login.html'), name='logout'),
+    path('', login_views.LoginView.as_view(template_name='dash/login.html'), name='login'),
+    path('logout/', login_views.LogoutView.as_view(template_name='dash/login.html'), name='logout'),
     path('dashboard/', views.index, name='index'),
     path('guerreronegro/', views.guerreronegro, name='guerreronegro'),
     path('results/<str:ficha>/', views.results, name='results'),
