@@ -158,12 +158,13 @@
                                             <thead>
                                                 <tr>
                                                     <th>Nombre</th>
-                                                    <th>FN</th>
+                                                    <th>Fecha de Nacimiento</th>
                                                     <th>Ficha</th>
-                                                    <th>Estudios</th> 
+                                                     
                                                     {% if request.user.is_superuser %}
-                                                    <th>Editar</th>
+                                                    <th>Editar Inf. Paciente</th>
                                                     {% endif %}
+                                                    <th>Resultados</th>
 
                                                 </tr>
                                             </thead>
@@ -173,10 +174,12 @@
                                                         <td>{{p.nombre_completo}}</td>
                                                         <td>{{p.fecha_nacimiento}}</td>
                                                         <td>{{p.ficha}}</td>
-                                                        <td><a href="{% url 'results' p.ficha %}">Ver</a></td>
+                                                       
                                                         {% if request.user.is_superuser %}
                                                             <td><a href="{% url 'paciente_update' p.pk %}">Editar</a></td>
                                                         {% endif %}
+
+                                                        <td><a href="{% url 'results' p.ficha %}">Ver</a></td>
                                                     </tr>
                                                 {% endfor %}
                                                 
