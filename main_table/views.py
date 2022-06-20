@@ -19,7 +19,7 @@ def index(request):
     context = {
         'paciente': PacienteInformacion.objects.all()
     }
-    return render(request, 'startmin/pages/index.html', context)
+    return render(request, 'startmin/dash/index.html', context)
 
 
 
@@ -27,7 +27,7 @@ def guerreronegro(request):
     context = {
         'paciente': PacienteInformacion.objects.filter(lugar_nacimiento='Guerrero Negro')
     }
-    return render(request, 'startmin/pages/tables.html', context)
+    return render(request, 'startmin/dash/tables.html', context)
 
 
 def isladecedros(request):
@@ -35,7 +35,7 @@ def isladecedros(request):
     context = {
         'paciente': PacienteInformacion.objects.filter(lugar_nacimiento='Isla de Cedros')
     }
-    return render(request, 'startmin/pages/isladecedros.html', context)
+    return render(request, 'startmin/dash/isladecedros.html', context)
 
 
 def results(request, ficha):
