@@ -32,6 +32,11 @@
             <li>
                 <a href="{% url 'isladecedros' %}"><i class="fa fa-table fa-fw"></i>Isla de Cedros</a>
             </li>
+            {% if request.user.is_superuser %}
+                <li>
+                    <a href="{% url 'actualizar_info' %}"><i class="fa fa-table fa-fw"></i>Actualizar Info</a>
+                </li>
+            {% endif %}
             <!-- <li>
                 <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
             </li>

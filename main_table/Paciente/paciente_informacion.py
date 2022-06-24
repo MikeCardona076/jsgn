@@ -9,7 +9,7 @@ class PacienteInformacion(models.Model):
     lugar_nacimiento = models.CharField(max_length=100, blank=True, null=True)
     ficha = models.CharField(max_length=100, blank=True, null=True)
 
-    #Return Ficha as primary key
+    # Return Ficha as primary key
     def __str__(self):
         return self.ficha
 

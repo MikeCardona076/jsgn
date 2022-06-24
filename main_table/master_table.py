@@ -11,13 +11,17 @@ pruebas = (
 
 class PruebaLaboratorio(models.Model):
     paciente = models.CharField(max_length=100, blank=True)
-    clave = models.IntegerField(default=0)
+    nombre_paciente = models.CharField(max_length=100, blank=True)
+    fecha_nacimiento = models.CharField(max_length=100, blank=True)
     prueba = models.CharField(max_length=100, blank=True)
     estudio = models.CharField(max_length=100, blank=True)
     resultado = models.CharField(max_length=100)
     unidad = models.CharField(max_length=100)
 
     #If paciente does not exist, then pass it to the next one
+
+    # def __str__(self):
+    #     return self.paciente
 
 
 
