@@ -1,7 +1,8 @@
+from cgi import print_arguments
 import datetime
 from typing import Dict
-from django.http import Http404
-from django.shortcuts import render
+from django.http import Http404, HttpResponse
+from django.shortcuts import redirect, render
 from .Paciente.paciente_informacion import PacienteInformacion
 
 from .master_table import *
@@ -18,6 +19,7 @@ from .forms import *
 
 def index(request):
 
+
     context = {
         'pacientes_GN' : PacienteInformacion.objects.filter(lugar_nacimiento = 'Guerrero Negro').count(),
         'pacientes_IC'  : PacienteInformacion.objects.filter(lugar_nacimiento = 'Isla de Cedros').count(),
@@ -28,13 +30,7 @@ def index(request):
 
 
 def guerreronegro(request):
-    # pacientes = PacienteInformacion.objects.all()
 
-    # for paciente in pacientes:
-
-    #     paciente.fecha_nacimiento = paciente.fecha_nacimiento[:10]
-    #     paciente.save()
-    #     print(f"Paciente Actualizado con exito por {request.user}")
         
     context = {
         'paciente': PacienteInformacion.objects.filter(lugar_nacimiento='Guerrero Negro')
@@ -52,18 +48,10 @@ def isladecedros(request):
 
 def results(request, ficha):
 
-    qs30_resultado = dict()
-
-    for prueba in PruebaLaboratorio.objects.filter(paciente = ficha,estudio='1533'):
-        for estudio in EstudiosLaboratorio.objects.all():
-            if estudio.clave == prueba.prueba:
-                # llave del diciconario es el nombre de la prueba y los valores son prueba.resultado y prueba.unidad
-                qs30_resultado[estudio.nombre] = [prueba.resultado, prueba.unidad]
-            else:
-                continue
 
     context = {
-        'qs30_resultado': qs30_resultado,
+        'qs30_resultado': PruebaLaboratorio.objects.filter(paciente = ficha, estudio='1533'),
+        'bh': PruebaLaboratorio.objects.filter(paciente = ficha, estudio='Biometria Hematica Completa'),
     }
 
     return render(request, 'Result/results.html', context)
@@ -74,3 +62,44 @@ class PacienteUpdate(UpdateView):
     form_class = PacienteInformacionForm
     template_name = 'Result/paciente_update.html'
     success_url = '/guerreronegro/'
+
+
+
+
+def actualizar_info(request):
+    try:
+            pacientes = PacienteInformacion.objects.all()
+            for paciente in pacientes:
+
+                paciente.fecha_nacimiento = paciente.fecha_nacimiento[:10]
+                paciente.save()
+
+            ##################################################################
+            pruebas = PruebaLaboratorio.objects.all()
+
+            for prueba in pruebas:
+                for paciente_info in pacientes:
+                    if paciente_info.ficha == prueba.paciente:
+                        prueba.nombre_paciente = paciente_info.nombre_completo
+                        prueba.fecha_nacimiento = paciente_info.fecha_nacimiento
+                        prueba.save()
+
+            ##################################################################
+
+            for e in EstudiosLaboratorio.objects.all():
+                prueba_actualiza_nombre = PruebaLaboratorio.objects.all()
+                for p in prueba_actualiza_nombre:
+                    if p.prueba == e.clave:
+                        p.prueba = e.nombre
+                        p.save()
+
+            return redirect('/dashboard/')
+
+            ##################################################################
+
+    except Exception as e:
+        print(e)
+        return HttpResponse('Error al actualizar, intente de nuevo más tarde')
+        
+
+

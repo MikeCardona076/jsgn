@@ -244,6 +244,34 @@
                     
             </div>
             <!-- /#page-wrapper -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr>
+                                <th> Nombre del archivo</th>
+                                <th>Accion</th>                                 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Pacientes en Guerrero Negro</td>
+                                <td><a href ="{% url 'get_guerreo_negro' %}">Descargar</a></td>
+                            </tr>
+
+                            <tr>
+                                <td>Pacientes en Isla de Cedros</td>
+                                <td><a href ="{% url 'get_Islacedros' %}">Descargar</a></td>
+                            </tr>
+
+                            <tr>
+                                <td>Quimica Sanguinea  todos los pacientes</td>
+                                <td><a href ="{% url 'get_quimica_sanguinea_all' %}">Descargar</a></td>
+                            </tr>
+                        </tbody>
+                </div>
+
+            </div>
 
         </div>
         <!-- /#wrapper -->
