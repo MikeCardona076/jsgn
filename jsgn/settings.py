@@ -118,15 +118,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-<<<<<<< HEAD
 STATICFILES_DIRS = [ BASE_DIR / 'static' ]
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-=======
-# STATICFILES_DIRS = [ BASE_DIR / 'static' ]
-STATIC_ROOT = BASE_DIR / 'static'
->>>>>>> 65aa0deb49d9d824a856448af441b8a0e01befa2
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
