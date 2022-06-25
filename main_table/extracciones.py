@@ -16,20 +16,26 @@ from .master_table import EstudiosLaboratorio, PruebaLaboratorio
 def get_guerreo_negro(request):
     pacientes_guerrero_negro =  PacienteInformacion.objects.filter(lugar_nacimiento = 'Guerrero Negro')
 
-    df_gn =  dict()
-
-    for p in pacientes_guerrero_negro:
-
-        if p.ficha not in df_gn:
-            df_gn[p.ficha] = []
-
-        df_gn[p.ficha].append(p.nombre_completo)
-        df_gn[p.ficha].append(p.fecha_nacimiento)
-        df_gn[p.ficha].append(p.sexo)
-        df_gn[p.ficha].append(p.lugar_nacimiento)
+    serializer = PacienteInformacionSerializer(pacientes_guerrero_negro, many=True)
 
 
-    df =  pd.DataFrame(df_gn)
+    df = pd.DataFrame(serializer.data)
+
+
+    # df_gn =  dict()
+
+    # for p in pacientes_guerrero_negro:
+
+    #     if p.ficha not in df_gn:
+    #         df_gn[p.ficha] = []
+
+    #     df_gn[p.ficha].append(p.nombre_completo)
+    #     df_gn[p.ficha].append(p.fecha_nacimiento)
+    #     df_gn[p.ficha].append(p.sexo)
+    #     df_gn[p.ficha].append(p.lugar_nacimiento)
+
+
+    # df =  pd.DataFrame(df_gn)
 
     df.to_excel("Pacientes_Guerrero.xlsx")
 
@@ -46,32 +52,36 @@ def get_Islacedros(request):
     try:
         pacientes_isladecedros =  PacienteInformacion.objects.filter(lugar_nacimiento = 'Isla de Cedros')
 
-        df_ic =  dict()
-
-        for p in pacientes_isladecedros:
-
-            if p.id not in df_ic:
-                df_ic[p.ficha] = []
-
-            df_ic[p.ficha].append(p.nombre_completo)
-            df_ic[p.ficha].append(p.fecha_nacimiento)
-            df_ic[p.ficha].append(p.sexo)
-            df_ic[p.ficha].append(p.lugar_nacimiento)
-            df_ic[p.ficha].append(p.ficha)
+        serializer = PacienteInformacionSerializer(pacientes_isladecedros, many=True)
 
 
-        df =  pd.DataFrame(df_ic)
+        df = pd.DataFrame(serializer.data)
+
+        # df_ic =  dict()
+
+        # for p in pacientes_isladecedros:
+
+        #     if p.id not in df_ic:
+        #         df_ic[p.ficha] = []
+
+        #     df_ic[p.ficha].append(p.nombre_completo)
+        #     df_ic[p.ficha].append(p.fecha_nacimiento)
+        #     df_ic[p.ficha].append(p.sexo)
+        #     df_ic[p.ficha].append(p.lugar_nacimiento)
+        #     df_ic[p.ficha].append(p.ficha)
+
+
+        # df =  pd.DataFrame(df_ic)
 
         df.to_excel("Isladecedros.xlsx")
-
     
         with open('Isladecedros.xlsx', 'rb') as f:
             response = HttpResponse(f.read(), content_type='application/vnd.ms-excel')
             response['Content-Disposition'] = 'attachment; filename="Isladecedros.xlsx"'
             return response
 
-    except:
-        return HttpResponse("Problemas al obtener los datos")
+    except Exception as e:
+        return HttpResponse(e)
 
 
 
@@ -87,6 +97,8 @@ def get_quimica_sanguinea_all(request):
 
         #Create a dataframe from the serializer data
         df = pd.DataFrame(serializer.data)
+
+  
 
 
         #Rename the columns
@@ -107,8 +119,7 @@ def get_quimica_sanguinea_all(request):
         # df.insert(1, 'Fecha de Nacimiento', fecha_nacimiento)
 
 
-        return HttpResponse(df.to_html())
-
+       
 
 
 
@@ -192,12 +203,12 @@ def get_quimica_sanguinea_all(request):
         #         df = df.transpose()
 
 
-        # df.to_excel("Quimica_Sanguinea.xlsx")
+        df.to_excel("Quimica_Sanguinea.xlsx")
 
-        # with open('Quimica_Sanguinea.xlsx', 'rb') as f:
-        #     response = HttpResponse(f.read(), content_type='application/vnd.ms-excel')
-        #     response['Content-Disposition'] = 'attachment; filename="Quimica_Sanguinea.xlsx"'
-        #     return response
+        with open('Quimica_Sanguinea.xlsx', 'rb') as f:
+            response = HttpResponse(f.read(), content_type='application/vnd.ms-excel')
+            response['Content-Disposition'] = 'attachment; filename="Quimica_Sanguinea.xlsx"'
+            return response
 
 
     except Exception as e:

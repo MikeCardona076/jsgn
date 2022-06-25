@@ -26,4 +26,5 @@ urlpatterns = [
     path('', include('main_table.urls')),
     path('', include('rest_framework.urls'))
 
-]
+] 
+

@@ -9,7 +9,13 @@ from .master_table import EstudiosLaboratorio, PruebaLaboratorio
 class PacienteInformacionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = PacienteInformacion
-        fields = '__all__'
+        fields = [
+                'nombre_completo' ,
+                'fecha_nacimiento',
+                'sexo',
+                'lugar_nacimiento',
+                'ficha',
+        ]
 
 class PruebaLaboratorioSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

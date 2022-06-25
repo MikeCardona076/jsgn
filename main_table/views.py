@@ -48,10 +48,16 @@ def isladecedros(request):
 
 def results(request, ficha):
 
+    qs30_resultado =  PruebaLaboratorio.objects.filter(paciente = ficha, estudio='1533')
+    bh = PruebaLaboratorio.objects.filter(paciente = ficha, estudio='Biometria Hematica Completa')
+
+    if qs30_resultado.count()  == 0 or None or bh.count() == 0 or None:
+        
+        return redirect('/guerreronegro/')
 
     context = {
-        'qs30_resultado': PruebaLaboratorio.objects.filter(paciente = ficha, estudio='1533'),
-        'bh': PruebaLaboratorio.objects.filter(paciente = ficha, estudio='Biometria Hematica Completa'),
+        'qs30_resultado': qs30_resultado,
+        'bh': bh,
     }
 
     return render(request, 'Result/results.html', context)
