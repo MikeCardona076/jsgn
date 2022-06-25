@@ -45,7 +45,7 @@
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">MACC</a>
+                    <a class="navbar-brand" href="#">MACC</a>
                 </div>
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -132,7 +132,7 @@
                 <!-- /.navbar-top-links -->
                 {% include 'Panel/main_panel.html' %}
 
-                
+
                 <!-- /.navbar-static-side -->
             </nav>
 
@@ -160,7 +160,7 @@
                                                     <th>Nombre</th>
                                                     <th>Fecha de Nacimiento</th>
                                                     <th>Ficha</th>
-                                                     
+
                                                     {% if request.user.is_superuser %}
                                                     <th>Editar Inf. Paciente</th>
                                                     {% endif %}
@@ -174,7 +174,7 @@
                                                         <td>{{p.nombre_completo}}</td>
                                                         <td>{{p.fecha_nacimiento}}</td>
                                                         <td>{{p.ficha}}</td>
-                                                       
+
                                                         {% if request.user.is_superuser %}
                                                             <td><a href="{% url 'paciente_update' p.pk %}">Editar</a></td>
                                                         {% endif %}
@@ -182,7 +182,7 @@
                                                         <td><a href="{% url 'results' p.ficha %}">Ver</a></td>
                                                     </tr>
                                                 {% endfor %}
-                                                
+
                                             </tbody>
                                         </table>
                                     </div>
