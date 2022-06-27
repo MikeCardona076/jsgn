@@ -24,4 +24,5 @@ urlpatterns = [
 
     #Update
     path('paciente/<int:pk>/update/', views.PacienteUpdate.as_view(), name='paciente_update'),
+    path('PruebaLaboratorioUpdate/<int:pk>/update/', views.PruebaLaboratorioUpdate.as_view(), name='PruebaLaboratorioUpdate'),
 ] + _ED

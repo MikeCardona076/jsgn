@@ -171,6 +171,9 @@
                                             <th scope="col">Prueba</th>
                                             <th scope="col">Resultado</th>
                                             <th scope="col">Unidad</th>
+                                            {% if request.user.is_superuser %}
+                                            `<th scope="col">Editar</th>
+                                            {% endif %}
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -180,6 +183,10 @@
                                                 <td>{{ value.prueba }}</td>
                                                 <td>{{ value.resultado }}</td>
                                                 <td>{{ value.unidad }}</td>
+                                                {% if request.user.is_superuser %}
+                                                `<th scope="col"><a href="{% url 'PruebaLaboratorioUpdate' value.id %}">Editar</a></th>
+                                                {% endif %}
+                                                
                                             </tr>
                                             {% endfor %}
                                       </table>

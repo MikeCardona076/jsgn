@@ -109,3 +109,13 @@ def actualizar_info(request):
         
 
 
+
+###########################################################
+
+class PruebaLaboratorioUpdate(UpdateView):
+    model = PruebaLaboratorio
+    form_class = PruebaLaboratorioForm
+    template_name = 'funciones/formulario.html'
+    success_url = '/guerreronegro/'
+
+
