@@ -15,6 +15,14 @@ class PacienteInformacionSerializer(serializers.HyperlinkedModelSerializer):
                 'sexo',
                 'lugar_nacimiento',
                 'ficha',
+                'edad',
+                'medicion_cintura',
+                'indice_de_masa_corporal',
+                'aumento_trigliceridos',
+                'aumento_colesterol_HDL',
+                'tension_arterial',
+                'medicacion_anti_hipertensiva' ,
+                'glicemia_ayunas' ,
         ]
 
 class PruebaLaboratorioSerializer(serializers.HyperlinkedModelSerializer):
