@@ -3,8 +3,81 @@ from django.forms import ModelForm
 from .master_table import *
 from .Paciente.paciente_informacion import PacienteInformacion
 
+from .Tablas.qs30 import QS30
 
 
+
+class QS30Form(ModelForm):
+    class Meta:
+        model = QS30
+        fields = "__all__"
+        exclude = ['paciente']
+
+        labels = {
+                'glucosa': 'Glucosa',
+                'nitrOgeno_Ureico': 'Nitrógeno Úrico',
+                'urea_serica': 'Urea Sérica',
+                'creatinina': 'Creatinina',
+                'colesterol_Total': 'Colesterol Total',
+                'trigliceridos': 'Trigliceridos',
+                'acido_Urico_Serico': 'Ácido Urico Sérico',
+                'proteinas_Totales': 'Proteinas Totales',
+                'albumina_Serica': 'Albumina Sérica',
+                'globulina': 'Globulina',
+                'deshidrogenasa_Lactica': 'Deshidrogenasa Láctica',
+                'transaminasa_Glutamico_Oxalacetica': 'Transaminasa Glutamico Oxalacetica',
+                'transaminasa_Glutamico_Piruvica': 'Transaminasa Glutamico Piruvica',
+                'fosfatasa_Alcalina': 'Fosfatasa Alcalina',
+
+                'gammaglutamil_Transpeptidasa': 'Gammaglutamil Transpeptidasa',
+                'sodio_Sérico': 'Sodio Sérico',
+                'potasio_Sérico': 'Potasio Sérico',
+                'cloro_Serico': 'Cloro Sérico',
+                'calcio_Serico': 'Calcio Sérico',
+                'fosforo_Sérico': 'Fosforo Sérico',
+                'bilirrubina_Total': 'Bilirrubina Total',
+                'bilirrubina_Conjugada': 'Bilirrubina Conjugada',
+                'colesterol_alta_densidad': 'Colesterol Alta Densidad',
+                'colesterol_Baja_Densidad': 'Colesterol Baja Densidad',
+                'Indice_Aterogenico': 'Indice Aterogenico',
+        }
+
+        widgets = {
+                'glucosa': forms.TextInput(attrs={'class': 'form-control'}),
+                'nitrOgeno_Ureico': forms.TextInput(attrs={'class': 'form-control'}),
+                'urea_serica': forms.TextInput(attrs={'class': 'form-control'}),
+                'creatinina': forms.TextInput(attrs={'class': 'form-control'}),
+                'colesterol_Total': forms.TextInput(attrs={'class': 'form-control'}),
+                'trigliceridos': forms.TextInput(attrs={'class': 'form-control'}),
+                'acido_Urico_Serico': forms.TextInput(attrs={'class': 'form-control'}),
+                'proteinas_Totales': forms.TextInput(attrs={'class': 'form-control'}),
+                'albumina_Serica': forms.TextInput(attrs={'class': 'form-control'}),
+                'globulina': forms.TextInput(attrs={'class': 'form-control'}),
+                'deshidrogenasa_Lactica': forms.TextInput(attrs={'class': 'form-control'}),
+                'transaminasa_Glutamico_Oxalacetica': forms.TextInput(attrs={'class': 'form-control'}),
+                'transaminasa_Glutamico_Piruvica': forms.TextInput(attrs={'class': 'form-control'}),
+                'fosfatasa_Alcalina': forms.TextInput(attrs={'class': 'form-control'}),
+
+                'gammaglutamil_Transpeptidasa': forms.TextInput(attrs={'class': 'form-control'}),
+                'sodio_Sérico': forms.TextInput(attrs={'class': 'form-control'}),
+                'potasio_Sérico': forms.TextInput(attrs={'class': 'form-control'}),
+                'cloro_Serico': forms.TextInput(attrs={'class': 'form-control'}),
+                'calcio_Serico': forms.TextInput(attrs={'class': 'form-control'}),
+                'fosforo_Sérico': forms.TextInput(attrs={'class': 'form-control'}),
+                'bilirrubina_Total': forms.TextInput(attrs={'class': 'form-control'}),
+                'bilirrubina_Conjugada': forms.TextInput(attrs={'class': 'form-control'}),
+                'colesterol_alta_densidad': forms.TextInput(attrs={'class': 'form-control'}),
+                'colesterol_Baja_Densidad': forms.TextInput(attrs={'class': 'form-control'}),
+                'Indice_Aterogenico': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+
+
+
+
+
+
+# ##############################################################################################################
 class PacienteInformacionForm(forms.ModelForm):
     
     class Meta:

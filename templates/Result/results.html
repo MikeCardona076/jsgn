@@ -139,11 +139,11 @@
                 <div class="col-lg-8">
                     <div class="panel tabbed-panel panel-primary">
                         <div class="panel-heading clearfix">
-                            <div class="panel-title pull-left">Tabbed Panel Primary</div>
+                            <div class="panel-title pull-left">Estudios del Paciente {{ paciente.nombre_completo }}</div>
                             <div class="pull-right">
                                 <ul class="nav nav-tabs">
                                     <li class="active"><a href="#tab-primary-1" data-toggle="tab">Quimica Sanguinia de 30</a></li>
-                                    <li><a href="#tab-primary-2" data-toggle="tab">BH</a></li>
+                                    <!-- <li><a href="#tab-primary-2" data-toggle="tab">BH</a></li> -->
                                     <!-- 
                                     <li><a href="#tab-primary-3" data-toggle="tab">PSA</a></li>
                                     <li class="dropdown">
@@ -160,49 +160,32 @@
                         <div class="panel-body">
                             <div class="tab-content">
 
-
                                 <div class="tab-pane active" id="tab-primary-1">
-
-
                                     <table id="example" class="display nowrap" style="width:100%">
                                         <thead>
                                           <tr>
-                                            <!-- <th scope="col">Paciente</th> -->
-                                            <th scope="col">Prueba</th>
-                                            <th scope="col">Resultado</th>
-                                            <th scope="col">Unidad</th>
-                                            {% if request.user.is_superuser %}
-                                            `<th scope="col">Editar</th>
-                                            {% endif %}
+                                            <th scope="col">Quimica Sanguinea</th>
+                                            
                                         </tr>
                                         </thead>
                                         <tbody>
-
-                                            {% for value in qs30_resultado %}
                                             <tr>
-                                                <td>{{ value.prueba }}</td>
-                                                <td>{{ value.resultado }}</td>
-                                                <td>{{ value.unidad }}</td>
-                                                {% if request.user.is_superuser %}
-                                                `<th scope="col"><a href="{% url 'PruebaLaboratorioUpdate' value.id %}">Editar</a></th>
-                                                {% endif %}
-                                                
+                                                <td><a href="{% url 'PruebaLaboratorioUpdate'  paciente.pk %}">Editar Quimica Sanguinea</a></td>
                                             </tr>
-                                            {% endfor %}
                                       </table>
                                 </div>
 
-
+<!-- 
                                 <div class="tab-pane fade" id="tab-primary-2">
                         
 
                                     <table id="example" class="display nowrap" style="width:100%">
                                             <thead>
                                               <tr>
-                                                <!-- <th scope="col">Paciente</th> -->
+                                  
                                                 <th scope="col">Prueba</th>
                                                 <th scope="col">Resultado</th>
-                                                <!-- <th scope="col">Unidad</th> -->
+        
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -212,7 +195,7 @@
                                     
                                                     <td>{{ key.prueba }}</td>
                                                     <td>{{ key.resultado }}</td>
-                                                    <!-- <td>{{ key.unidad }}</td> -->
+                    
                                                 </tr>
                                                 {% endfor %}
                                             </tbody>
@@ -222,7 +205,7 @@
 
                                 <div class="tab-pane fade" id="tab-primary-3">Page 3</div>
                                 <div class="tab-pane fade" id="tab-primary-4">Page 4</div>
-                                <div class="tab-pane fade" id="tab-primary-5">Page 5</div>
+                                <div class="tab-pane fade" id="tab-primary-5">Page 5</div> -->
                             </div>
                         </div>
                     </div>

@@ -46,18 +46,10 @@ def isladecedros(request):
     return render(request, 'dash/isladecedros.html', context)
 
 
-def results(request, ficha):
-
-    qs30_resultado =  PruebaLaboratorio.objects.filter(paciente = ficha, estudio='1533')
-    bh = PruebaLaboratorio.objects.filter(paciente = ficha, estudio='Biometria Hematica Completa')
-
-    if qs30_resultado.count()  == 0 or None or bh.count() == 0 or None:
-        
-        return redirect('/guerreronegro/')
-
+def results(request, pk):
     context = {
-        'qs30_resultado': qs30_resultado,
-        'bh': bh,
+        'bh': QS30.objects.filter(id=pk),
+        'paciente': PacienteInformacion.objects.get(id=pk)
     }
 
     return render(request, 'Result/results.html', context)
@@ -113,8 +105,8 @@ def actualizar_info(request):
 ###########################################################
 
 class PruebaLaboratorioUpdate(UpdateView):
-    model = PruebaLaboratorio
-    form_class = PruebaLaboratorioForm
+    model = QS30
+    form_class = QS30Form
     template_name = 'funciones/formulario.html'
     success_url = '/guerreronegro/'
 

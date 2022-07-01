@@ -1,3 +1,4 @@
+from atexit import register
 import re
 from django.contrib import admin
 
@@ -13,6 +14,12 @@ from import_export.admin import ImportExportModelAdmin
 
 from django.core.exceptions import ObjectDoesNotExist
 
+from .Tablas.qs30 import QS30
+
+
+
+
+
 
 ########################################################################################################################
 class PacienteResource(resources.ModelResource):
@@ -21,10 +28,14 @@ class PacienteResource(resources.ModelResource):
 
 class PacienteAdmin(ImportExportModelAdmin):
         resource_class = PacienteResource
+        search_fields = ['paciente__paciente__nombre', 'paciente__paciente__apellido']
         
         
-        
+
 admin.site.register(PacienteInformacion, PacienteAdmin)
+
+
+
 
 ########################################################################################################################
 class PruebaLaboratorioResource(resources.ModelResource):
@@ -81,3 +92,14 @@ admin.site.register(EstudiosLaboratorio, EstudiosLaboratorioAdmin)
 
 
 #######################################
+class QS30Resource(resources.ModelResource):
+    class Meta:
+        model = QS30
+
+class QS30Admin(ImportExportModelAdmin):
+        resource_class = QS30Resource
+
+        
+
+admin.site.register(QS30, QS30Admin)
+
