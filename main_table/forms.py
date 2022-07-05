@@ -97,7 +97,10 @@ class PacienteInformacionForm(forms.ModelForm):
                 'tension_arterial',
                 'medicacion_anti_hipertensiva' ,
                 'glicemia_ayunas' ,
-        ]
+                'talla',
+                'peso',
+                'clasificacion_de_obesidad',
+                ]
         labels = {
 
                 'nombre_completo': 'Nombre Completo',
@@ -112,6 +115,9 @@ class PacienteInformacionForm(forms.ModelForm):
                 'tension_arterial' : 'Tensión Arterial',
                 'medicacion_anti_hipertensiva' : 'Medicación Antihipertensiva',
                 'glicemia_ayunas' : 'Glicemia Ayunas',
+                'talla' : 'Talla',
+                'peso' : 'Peso',
+                'clasificacion_de_obesidad' : 'Clasificación de Obesidad',
         }
         widgets = {
                 'nombre_completo': forms.TextInput(attrs={'class':'form-control'}),
@@ -129,6 +135,9 @@ class PacienteInformacionForm(forms.ModelForm):
                 'tension_arterial': forms.TextInput(attrs={'class':'form-control'}),
                 'medicacion_anti_hipertensiva' : forms.TextInput(attrs={'class':'form-control'}),
                 'glicemia_ayunas' : forms.TextInput(attrs={'class':'form-control'}),
+                'talla' : forms.TextInput(attrs={'class':'form-control'}),
+                'peso' : forms.TextInput(attrs={'class':'form-control'}),
+                'clasificacion_de_obesidad' : forms.Select(attrs={'class':'form-control'}),
         }
 
 

@@ -66,34 +66,48 @@ class PacienteUpdate(UpdateView):
 
 def actualizar_info(request):
     try:
-            pacientes = PacienteInformacion.objects.all()
-            for paciente in pacientes:
+        # pacientes = PacienteInformacion.objects.all()
+        # pacientes_QS30 = QS30.objects.all()
+        # for qs30 in pacientes_QS30:
+        #     for paciente in pacientes:
+        #         if paciente.id == qs30.paciente.id:
+        #             paciente.glicemia_ayunas = qs30.glucosa
+        #             paciente.aumento_colesterol_HDL =  qs30.colesterol_alta_densidad
+        #             paciente.aumento_trigliceridos = qs30.trigliceridos
+        #             paciente.save()
+        #             print('Actualizado')
+        #         else:
+        #             print('No actualizado')
 
-                paciente.fecha_nacimiento = paciente.fecha_nacimiento[:10]
-                paciente.save()
 
-            ##################################################################
-            pruebas = PruebaLaboratorio.objects.all()
+            # pacientes = PacienteInformacion.objects.all()
+            # for paciente in pacientes:
 
-            for prueba in pruebas:
-                for paciente_info in pacientes:
-                    if paciente_info.ficha == prueba.paciente:
-                        prueba.nombre_paciente = paciente_info.nombre_completo
-                        prueba.fecha_nacimiento = paciente_info.fecha_nacimiento
-                        prueba.save()
+            #     paciente.fecha_nacimiento = paciente.fecha_nacimiento[:10]
+            #     paciente.save()
 
-            ##################################################################
+            # ##################################################################
+            # pruebas = PruebaLaboratorio.objects.all()
 
-            for e in EstudiosLaboratorio.objects.all():
-                prueba_actualiza_nombre = PruebaLaboratorio.objects.all()
-                for p in prueba_actualiza_nombre:
-                    if p.prueba == e.clave:
-                        p.prueba = e.nombre
-                        p.save()
+            # for prueba in pruebas:
+            #     for paciente_info in pacientes:
+            #         if paciente_info.ficha == prueba.paciente:
+            #             prueba.nombre_paciente = paciente_info.nombre_completo
+            #             prueba.fecha_nacimiento = paciente_info.fecha_nacimiento
+            #             prueba.save()
+
+            # ##################################################################
+
+            # for e in EstudiosLaboratorio.objects.all():
+            #     prueba_actualiza_nombre = PruebaLaboratorio.objects.all()
+            #     for p in prueba_actualiza_nombre:
+            #         if p.prueba == e.clave:
+            #             p.prueba = e.nombre
+            #             p.save()
 
             return redirect('/dashboard/')
 
-            ##################################################################
+            # ##################################################################
 
     except Exception as e:
         print(e)
