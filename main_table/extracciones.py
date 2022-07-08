@@ -26,12 +26,12 @@ def get_guerreo_negro(request):
 def get_Islacedros(request):
 
     try:
-        pacientes_isladecedros =  PacienteInformacion.objects.filter(lugar_nacimiento = 'Isla de Cedros').values()
+        pacientes_isladecedros =  PacienteInformacion.objects.filter(lugar_nacimiento = 'Isla de Cedros',  edad__isnull = False).values()
 
         df = pd.DataFrame(pacientes_isladecedros)
 
         df.to_excel("Isladecedros.xlsx")
-    
+
         with open('Isladecedros.xlsx', 'rb') as f:
             response = HttpResponse(f.read(), content_type='application/vnd.ms-excel')
             response['Content-Disposition'] = 'attachment; filename="Isladecedros.xlsx"'

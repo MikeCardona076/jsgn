@@ -13,9 +13,10 @@ def pacientes_guerrero_negro_qs30(request):
 
     pacientes_guerrero_negro = PacienteInformacion.objects.filter(id__in = [ x.paciente.id for x in QS30.objects.all()], lugar_nacimiento = "Guerrero Negro")
 
-    pruebas = QS30.objects.filter(paciente__in = [ x.id for x in pacientes_guerrero_negro]  ).values()
 
-    columnas_qs30 = [ 
+    pruebas = QS30.objects.filter(paciente__in = [ x.id for x in pacientes_guerrero_negro]).values()
+
+    columnas_qs30 = [
     'paciente',
     'sexo',
     'Edad',
@@ -23,7 +24,7 @@ def pacientes_guerrero_negro_qs30(request):
     'medicion_cintura',
     'indice_de_masa_corporal',
     'aumento_trigliceridos',
-    'aumento_colesterol_HDL', 
+    'aumento_colesterol_HDL',
     'tension_arterial' ,
     'medicacion_anti_hipertensiva',
     'glicemia_ayunas',
@@ -63,7 +64,7 @@ def pacientes_guerrero_negro_qs30(request):
     df['medicion_cintura'] = [ x.medicion_cintura for x in pacientes_guerrero_negro]
     df['indice_de_masa_corporal'] = [ x.indice_de_masa_corporal for x in pacientes_guerrero_negro]
     df['aumento_trigliceridos'] = [ x.aumento_trigliceridos for x in pacientes_guerrero_negro]
-    df['aumento_colesterol_HDL'] = [ x.aumento_colesterol_HDL for x in pacientes_guerrero_negro] 
+    df['aumento_colesterol_HDL'] = [ x.aumento_colesterol_HDL for x in pacientes_guerrero_negro]
     df['tension_arterial'] = [ x.tension_arterial for x in pacientes_guerrero_negro]
     df['medicacion_anti_hipertensiva'] = [ x.medicacion_anti_hipertensiva for x in pacientes_guerrero_negro]
     df['glicemia_ayunas'] = [ x.glicemia_ayunas for x in pacientes_guerrero_negro]
@@ -80,11 +81,11 @@ def pacientes_guerrero_negro_qs30(request):
 
 def pacientes_Isla_Cedros_qs30(request):
 
-    pacientes_guerrero_negro = PacienteInformacion.objects.filter(id__in = [ x.paciente.id for x in QS30.objects.all()], lugar_nacimiento = "Isla de Cedros")
+    pacientes_guerrero_negro = PacienteInformacion.objects.filter(id__in = [ x.paciente.id for x in QS30.objects.all()], lugar_nacimiento = "Isla de Cedros", edad__isnull = False)
 
-    pruebas = QS30.objects.filter(paciente__in = [ x.id for x in pacientes_guerrero_negro]  ).values()
+    pruebas = QS30.objects.filter(paciente__in = [ x.id for x in pacientes_guerrero_negro]).values()
 
-    columnas_qs30 = [ 
+    columnas_qs30 = [
     'paciente',
     'sexo',
     'Edad',
@@ -92,7 +93,7 @@ def pacientes_Isla_Cedros_qs30(request):
     'medicion_cintura',
     'indice_de_masa_corporal',
     'aumento_trigliceridos',
-    'aumento_colesterol_HDL', 
+    'aumento_colesterol_HDL',
     'tension_arterial' ,
     'medicacion_anti_hipertensiva',
     'glicemia_ayunas',
@@ -133,7 +134,7 @@ def pacientes_Isla_Cedros_qs30(request):
     df['medicion_cintura'] = [ x.medicion_cintura for x in pacientes_guerrero_negro]
     df['indice_de_masa_corporal'] = [ x.indice_de_masa_corporal for x in pacientes_guerrero_negro]
     df['aumento_trigliceridos'] = [ x.aumento_trigliceridos for x in pacientes_guerrero_negro]
-    df['aumento_colesterol_HDL'] = [ x.aumento_colesterol_HDL for x in pacientes_guerrero_negro] 
+    df['aumento_colesterol_HDL'] = [ x.aumento_colesterol_HDL for x in pacientes_guerrero_negro]
     df['tension_arterial'] = [ x.tension_arterial for x in pacientes_guerrero_negro]
     df['medicacion_anti_hipertensiva'] = [ x.medicacion_anti_hipertensiva for x in pacientes_guerrero_negro]
     df['glicemia_ayunas'] = [ x.glicemia_ayunas for x in pacientes_guerrero_negro]
