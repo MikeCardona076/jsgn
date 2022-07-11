@@ -86,10 +86,9 @@ class PacienteInformacionForm(forms.ModelForm):
                 'nombre_completo',
                 'fecha_nacimiento',
                 'sexo',
-
                 'lugar_nacimiento',
                 'ficha',
-
+                'edad',
                 'medicion_cintura',
                 'indice_de_masa_corporal',
                 'aumento_trigliceridos',
@@ -100,6 +99,8 @@ class PacienteInformacionForm(forms.ModelForm):
                 'talla',
                 'peso',
                 'clasificacion_de_obesidad',
+                'antecedentes_diabetes',
+                'consentimiento_informado',
                 ]
         labels = {
 
@@ -108,6 +109,7 @@ class PacienteInformacionForm(forms.ModelForm):
                 'sexo': 'Sexo',
                 'lugar_nacimiento': 'Lugar de Nacimiento',
                 'ficha': 'Ficha',
+                'edad': 'Edad',
                 'medicion_cintura' : 'Medición de Cintura',
                 'indice_de_masa_corporal' : 'Indice de Masa Corporal',
                 'aumento_trigliceridos' : 'Aumento de Trigliceridos',
@@ -118,16 +120,16 @@ class PacienteInformacionForm(forms.ModelForm):
                 'talla' : 'Talla',
                 'peso' : 'Peso',
                 'clasificacion_de_obesidad' : 'Clasificación de Obesidad',
+                'antecedentes_diabetes' : 'Antecedentes de Diabetes',
+                'consentimiento_informado' : 'Consentimiento Informado',
         }
         widgets = {
                 'nombre_completo': forms.TextInput(attrs={'class':'form-control'}),
                 'fecha_nacimiento': forms.TextInput(attrs={'class':'form-control'}),
-
                 'sexo': forms.TextInput(attrs={'class':'form-control'}),
-
-
                 'lugar_nacimiento': forms.TextInput(attrs={'class':'form-control'}),
                 'ficha': forms.TextInput(attrs={'class':'form-control'}),
+                'edad': forms.TextInput(attrs={'class':'form-control'}),
                 'medicion_cintura': forms.TextInput(attrs={'class':'form-control'}),
                 'indice_de_masa_corporal': forms.TextInput(attrs={'class':'form-control'}),
                 'aumento_trigliceridos': forms.TextInput(attrs={'class':'form-control'}),
@@ -138,6 +140,8 @@ class PacienteInformacionForm(forms.ModelForm):
                 'talla' : forms.TextInput(attrs={'class':'form-control'}),
                 'peso' : forms.TextInput(attrs={'class':'form-control'}),
                 'clasificacion_de_obesidad' : forms.Select(attrs={'class':'form-control'}),
+                'antecedentes_diabetes' : forms.TextInput(attrs={'class':'form-control'}),
+                'consentimiento_informado' : forms.TextInput(attrs={'class':'form-control'}),
         }
 
 

@@ -97,6 +97,8 @@ def pacientes_Isla_Cedros_qs30(request):
     'tension_arterial' ,
     'medicacion_anti_hipertensiva',
     'glicemia_ayunas',
+    'antecedentes_diabetes',
+    'consentimiento_informado',
 
     #########################################
     'glucosa' ,
@@ -138,6 +140,8 @@ def pacientes_Isla_Cedros_qs30(request):
     df['tension_arterial'] = [ x.tension_arterial for x in pacientes_guerrero_negro]
     df['medicacion_anti_hipertensiva'] = [ x.medicacion_anti_hipertensiva for x in pacientes_guerrero_negro]
     df['glicemia_ayunas'] = [ x.glicemia_ayunas for x in pacientes_guerrero_negro]
+    df['antecedentes_diabetes'] = [ x.antecedentes_diabetes for x in pacientes_guerrero_negro]
+    df['consentimiento_informado'] = [ x.consentimiento_informado for x in pacientes_guerrero_negro]
 
     df.to_excel(f"Quimica_Sanguinea_Isla_Cedros{datetime.datetime.now().date()}.xlsx")
 

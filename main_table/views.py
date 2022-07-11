@@ -63,9 +63,39 @@ class PacienteUpdate(UpdateView):
 
 
 
+def calcula_IMC(talla, peso):
+    imc = eval(f'{peso} / ({talla} * {talla})')
+    return round(imc, 2)
+
 
 def actualizar_info(request):
     try:
+        pacientes = PacienteInformacion.objects.all()
+        for p in pacientes:
+            if p.peso is not None and p.talla is not None:
+                p.indice_de_masa_corporal = calcula_IMC(p.talla, p.peso)
+                p.save()
+                print('Actualizado')
+
+        return redirect('/dashboard/')
+    except Exception as e:
+        print(e)
+        return HttpResponse(e)
+        
+
+
+
+###########################################################
+
+class PruebaLaboratorioUpdate(UpdateView):
+    model = QS30
+    form_class = QS30Form
+    template_name = 'funciones/formulario.html'
+    success_url = '/guerreronegro/'
+
+
+
+
         # pacientes = PacienteInformacion.objects.all()
         # pacientes_QS30 = QS30.objects.all()
         # for qs30 in pacientes_QS30:
@@ -104,24 +134,3 @@ def actualizar_info(request):
             #         if p.prueba == e.clave:
             #             p.prueba = e.nombre
             #             p.save()
-
-            return redirect('/dashboard/')
-
-            # ##################################################################
-
-    except Exception as e:
-        print(e)
-        return HttpResponse('Error al actualizar, intente de nuevo más tarde')
-        
-
-
-
-###########################################################
-
-class PruebaLaboratorioUpdate(UpdateView):
-    model = QS30
-    form_class = QS30Form
-    template_name = 'funciones/formulario.html'
-    success_url = '/guerreronegro/'
-
-

@@ -29,6 +29,8 @@ class PacienteInformacion(models.Model):
     talla = models.CharField(max_length=100, blank=True, null=True)
     peso = models.CharField(max_length=100, blank=True, null=True)
     clasificacion_de_obesidad = models.CharField(max_length=100, choices=LISTA_CLASIFICACION, blank=True, null=True)
+    antecedentes_diabetes = models.CharField(max_length=100, blank=True, null=True, default='No')
+    consentimiento_informado = models.CharField(max_length=100, blank=True, null=True, default='No')
     
 
     # Return Ficha as primary key
