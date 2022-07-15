@@ -18,6 +18,7 @@ class PacienteInformacion(models.Model):
     sexo = models.CharField(max_length=10, default='M')
     lugar_nacimiento = models.CharField(max_length=100, blank=True, null=True)
     ficha = models.CharField(max_length=100, blank=True, null=True)
+    curp = models.CharField(max_length=100, blank=True, null=True)
     edad  = models.CharField(max_length=100, blank=True, null=True)
     medicion_cintura = models.CharField(max_length=100, blank=True, null=True)
     indice_de_masa_corporal = models.CharField(max_length=100, blank=True, null=True)

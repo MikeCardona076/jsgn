@@ -20,6 +20,7 @@ def pacientes_guerrero_negro_qs30(request):
     'paciente',
     'sexo',
     'Edad',
+    'curp',
     'Lugar de Nacimiento',
     'medicion_cintura',
     'indice_de_masa_corporal',
@@ -53,7 +54,10 @@ def pacientes_guerrero_negro_qs30(request):
     'bilirrubina_Conjugada' ,
     'colesterol_alta_densidad' ,
     'colesterol_Baja_Densidad' ,
-    'Indice_Aterogenico' ]
+    'Indice_Aterogenico' 
+    'antecedentes_diabetes',
+    'consentimiento_informado',
+    ]
 
     df = pd.DataFrame(pruebas, index=None, columns=columnas_qs30)
 
@@ -68,6 +72,9 @@ def pacientes_guerrero_negro_qs30(request):
     df['tension_arterial'] = [ x.tension_arterial for x in pacientes_guerrero_negro]
     df['medicacion_anti_hipertensiva'] = [ x.medicacion_anti_hipertensiva for x in pacientes_guerrero_negro]
     df['glicemia_ayunas'] = [ x.glicemia_ayunas for x in pacientes_guerrero_negro]
+    df['antecedentes_diabetes'] = [ x.antecedentes_diabetes for x in pacientes_guerrero_negro]
+    df['consentimiento_informado'] = [ x.consentimiento_informado for x in pacientes_guerrero_negro]
+    df['curp'] = [ x.curp for x in pacientes_guerrero_negro]
 
     df.to_excel(f"Quimica_Sanguinea_Guerrero_Negro{datetime.datetime.now().date()}.xlsx")
 
@@ -89,6 +96,7 @@ def pacientes_Isla_Cedros_qs30(request):
     'paciente',
     'sexo',
     'Edad',
+    'curp',
     'Lugar de Nacimiento',
     'medicion_cintura',
     'indice_de_masa_corporal',
@@ -142,6 +150,8 @@ def pacientes_Isla_Cedros_qs30(request):
     df['glicemia_ayunas'] = [ x.glicemia_ayunas for x in pacientes_guerrero_negro]
     df['antecedentes_diabetes'] = [ x.antecedentes_diabetes for x in pacientes_guerrero_negro]
     df['consentimiento_informado'] = [ x.consentimiento_informado for x in pacientes_guerrero_negro]
+    df['curp'] = [ x.curp for x in pacientes_guerrero_negro]
+
 
     df.to_excel(f"Quimica_Sanguinea_Isla_Cedros{datetime.datetime.now().date()}.xlsx")
 
